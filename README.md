@@ -7,7 +7,11 @@ Which can then be consumed by separate application containers, and exported into
 
 ## Installation
 
-Either use the pre-built images (link to public repo here), or built manually from this repository.
+Either use the pre-built images, or build manually from the assets in this repository.
+
+*Pre-built Images*
+* Nodejs-app - https://hub.docker.com/r/shifty128/nodejs-app/
+* xray-daemon - https://hub.docker.com/r/shifty128/xray-daemon/
 
 ## Usage
 
