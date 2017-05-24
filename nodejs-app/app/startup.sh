@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # Set Region
-REGION='us-east-2'
+REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep region | awk -F \" '{print $4}')
 
 # Set parameter name where XRay daemon outputs its address
-XRAY_IP_PARAM='default-cluster-xray-container'
+XRAY_PARAM_NAME='default-cluster-xray-container'
 
 # Digest SSM parameter from store
 
-XRAY_IP=$(aws ssm get-parameters --name $XRAY_IP_PARAM --region $REGION --query 'Parameters[*].Value' --output text)
+XRAY_IP=$(aws ssm get-parameters --name $XRAY_PARAM_NAME --region $REGION --query 'Parameters[*].Value' --output text)
 
 # TODO: Check for existing value in parameter
 # aws ssm describe-parameters --region us-east-2 --query 'Parameters[?Name==`default-cluster-xray-container`]'# Digest SSM parameter from store
