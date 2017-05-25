@@ -1,0 +1,21 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+      - ls -lah
+  build:
+    commands:
+      - echo "build step..."
+      - ls -lah
+  post_build:
+    commands:
+      - echo "Post-build step..."
+      - echo Build completed on `date`
+      - echo Pushing the Base Docker image...
+      - ls -lah
+artifacts:
+  files:
+    - '**/*'
